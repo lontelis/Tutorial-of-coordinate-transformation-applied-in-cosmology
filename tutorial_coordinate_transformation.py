@@ -14,6 +14,14 @@
 # Comment 2
 # The tutorial is dedicated to a workshop during the conference of Cosmology from Home
 # details found in: https://cosmologyfromhome.com/
+# Comment 3 (optional)
+# to run this code in a terminal open python with command 'ipython'
+# and then use command: 'run tutorial_coordinate_transformation.py'
+# Comment 4 (optional)
+# to open a jupyter notebook just perform the following command in a terminal: 
+# jupyter notebook
+# and then open the following file:
+# tutorial_coordinate_transformation.ipynb
 #
 #############################################################################
 
@@ -95,7 +103,7 @@ plt.show(),plt.ion()
 
 
 fig = plt.figure(2,figsize=(10,6))
-plt.suptitle('Cartesian coordinates 3D: $(x,y,z)$')
+plt.suptitle('Spherical coordinates 3D: $(r,\\theta,\\phi)$')
 ax = fig.add_subplot(projection='3d')
 ax.scatter(rs, ths, phs, marker='o')
 ax.set_xlabel('$r$ Label')
