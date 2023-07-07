@@ -2,8 +2,11 @@
 Tutorial of coordinate transformation applied in cosmology dedicated for a workshop in Cosmology from Home conference
 
 date       : 7 July 2023
+
 Comment 0:
+
 code found in repository: 
+
 https://github.com/lontelis/Tutorial-of-coordinate-transformation-applied-in-cosmology
 Comment 1
 dependences: cosmopit
