@@ -192,3 +192,87 @@ plt.xlabel('$z$, redshift from two functions writen separatly in this code')
 plt.ylabel('$z$, redshift from two function built in the same module')
 plt.show()
 
+
+
+################################################################################################################
+#
+# Simulation data from zDecRa to xyz
+#
+################################################################################################################
+
+
+n = 300
+print('# producing '+str(n)+' random points in a 3D astronomical/cosmological coordinate system')
+print('# There are '+str(n)+' random points at different redshift bins, Dz in [0,1], [1,2], [2,3], [3,4]')
+
+reds_red2cart_slice1 = randrange(n,   0.0,   1.0)
+decs_red2cart_slice1 = randrange(n,  30.0,  50.0)
+rass_red2cart_slice1 = randrange(n, 150.0, 200.0)
+
+reds_red2cart_slice2 = randrange(n,   1.0,   2.0)
+decs_red2cart_slice2 = randrange(n,  20.0,  60.0)
+rass_red2cart_slice2 = randrange(n, 125.0, 225.0)
+
+reds_red2cart_slice3 = randrange(n,   2.0,   3.0)
+decs_red2cart_slice3 = randrange(n,  10.0,  70.0)
+rass_red2cart_slice3 = randrange(n, 100.0, 250.0)
+
+reds_red2cart_slice4 = randrange(n,   3.0,   4.0)
+decs_red2cart_slice4 = randrange(n,   0.0,  80.0)
+rass_red2cart_slice4 = randrange(n,  90.0, 260.0)
+
+print('# cosmology for homogeneous and isotropic universe')
+print('# define cosmological parameters          ')
+print(' Om  OL   w0  w1')
+cosmopars=[0.3,0.7,-1.0,0.0]
+
+print('# inverse transform: redshift (z), DEC, RA to x,y,z cartesian coordinates')
+x_red2cart_slice1,y_red2cart_slice1,z_red2cart_slice1 = np.zeros(n),np.zeros(n),np.zeros(n)
+for i in range(n):
+	x_red2cart_slice1[i],y_red2cart_slice1[i],z_red2cart_slice1[i] = galtools.zdecra2xyz(reds_red2cart_slice1[i],decs_red2cart_slice1[i],rass_red2cart_slice1[i],params=cosmopars,dist_type='proper')
+
+print('# inverse transform: redshift (z), DEC, RA to x,y,z cartesian coordinates')
+x_red2cart_slice2,y_red2cart_slice2,z_red2cart_slice2 = np.zeros(n),np.zeros(n),np.zeros(n)
+for i in range(n):
+	x_red2cart_slice2[i],y_red2cart_slice2[i],z_red2cart_slice2[i] = galtools.zdecra2xyz(reds_red2cart_slice2[i],decs_red2cart_slice2[i],rass_red2cart_slice2[i],params=cosmopars,dist_type='proper')
+
+print('# inverse transform: redshift (z), DEC, RA to x,y,z cartesian coordinates')
+x_red2cart_slice3,y_red2cart_slice3,z_red2cart_slice3 = np.zeros(n),np.zeros(n),np.zeros(n)
+for i in range(n):
+	x_red2cart_slice3[i],y_red2cart_slice3[i],z_red2cart_slice3[i] = galtools.zdecra2xyz(reds_red2cart_slice3[i],decs_red2cart_slice3[i],rass_red2cart_slice3[i],params=cosmopars,dist_type='proper')
+
+print('# inverse transform: redshift (z), DEC, RA to x,y,z cartesian coordinates')
+x_red2cart_slice4,y_red2cart_slice4,z_red2cart_slice4 = np.zeros(n),np.zeros(n),np.zeros(n)
+for i in range(n):
+	x_red2cart_slice4[i],y_red2cart_slice4[i],z_red2cart_slice4[i] = galtools.zdecra2xyz(reds_red2cart_slice4[i],decs_red2cart_slice4[i],rass_red2cart_slice4[i],params=cosmopars,dist_type='proper')
+
+
+fig = plt.figure(10,figsize=(10,6))
+plt.suptitle('Astronomical coordinates 3D: (redshift, Dec, R.A.) ')
+ax = fig.add_subplot(projection='3d')
+ax.scatter(reds_red2cart_slice1, decs_red2cart_slice1, rass_red2cart_slice1, marker='o')
+ax.scatter(reds_red2cart_slice2, decs_red2cart_slice2, rass_red2cart_slice2, marker='o')
+ax.scatter(reds_red2cart_slice3, decs_red2cart_slice3, rass_red2cart_slice3, marker='o')
+ax.scatter(reds_red2cart_slice4, decs_red2cart_slice4, rass_red2cart_slice4, marker='o')
+ax.set_xlabel('$z$ Label')
+ax.set_ylabel('$DEC$ Label')
+ax.set_zlabel('$RA$ Label')
+plt.show(),plt.ion()
+
+plt.ion()
+fig = plt.figure(11,figsize=(10,6))
+plt.suptitle('Cartesian coordinates 3D: $(x,y,z)$')
+ax = fig.add_subplot(projection='3d')
+ax.scatter(x_red2cart_slice1,y_red2cart_slice1,z_red2cart_slice1, marker='o')
+ax.scatter(x_red2cart_slice2,y_red2cart_slice2,z_red2cart_slice2, marker='o')
+ax.scatter(x_red2cart_slice3,y_red2cart_slice3,z_red2cart_slice3, marker='o')
+ax.scatter(x_red2cart_slice4,y_red2cart_slice4,z_red2cart_slice4, marker='o')
+ax.set_xlabel('X Label')
+ax.set_ylabel('Y Label')
+ax.set_zlabel('Z Label')
+plt.show(),plt.ion()
+
+
+
+
+
